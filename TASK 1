@@ -1,0 +1,36 @@
+import random
+import string
+
+def create_password(size):
+    # Define the pool of characters to choose from
+    pool = string.ascii_letters + string.digits + string.punctuation
+    
+    # Generate a random password from the pool
+    passwd = ''.join(random.choice(pool) for _ in range(size))
+    
+    return passwd
+
+def run_password_generator():
+    print("Welcome to the Secure Password Creator!")
+    print("----------------------------------------")
+    
+    # Prompt for password size
+    while True:
+        try:
+            desired_size = int(input("Specify the length of your new password: "))
+            if desired_size <= 0:
+                print("The length must be a positive number.")
+            else:
+                break
+        except ValueError:
+            print("Invalid input. Please enter an integer value.")
+    
+    # Create the password
+    new_password = create_password(desired_size)
+    
+    # Output the generated password
+    print("\nHere is your new password:")
+    print(new_password)
+
+# Execute the password generator
+run_password_generator()
